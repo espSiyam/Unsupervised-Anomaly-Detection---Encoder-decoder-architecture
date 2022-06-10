@@ -2,9 +2,7 @@
 
 ## 1. Preprocessing part:
 
-This part is responsible for extracting frames from videos, then convert and save images (from two dataset) as numpy array.
-
-But **loading all the images, resizing, converting and saving them array** was taking too long and using **single thread** of processor. I've ultilized **multi-threading** to make this process faster as modified code used **all four cores.**
+* Used multi-threading to reduce the processing time to read the images, resizing, converting and saving them array. It reduced the processing time by more than 2X.
 
 ## 2. Model Training part:
 
@@ -15,3 +13,11 @@ But **loading all the images, resizing, converting and saving them array** was t
 
 ## 3. Model testing part:
 * If anomaly is detected at any frame, those frames will automatically stored in anomal_images folder
+
+## 4. Few Minor changes:
+* Made the codes moduler by separating the related functions and stored the as .py in utility folder.
+    * format_timedelta and get_saving_frames_durations functions for 1. Preprocessing part.
+    * mean_squared_loss function for 3. Model testing part.
+
+## 4. Experimented but failed:
+* Tried quantization and pruning (Tensorflow lite) of the model but failed. There aren't any enough resources for this type of architecture (Encoder-Decoder). It would make the inference faster, requre less memory and ideal to deploy on edge devices.
