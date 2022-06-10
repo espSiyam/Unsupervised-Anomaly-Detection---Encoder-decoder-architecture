@@ -49,4 +49,4 @@ stae_model.fit(training_data,
                target_data, 
                batch_size=batch_size, 
                epochs=epochs, 
-               callbacks = [callback_save,callback_early_stopping])
+               callbacks = [callback_save,callback_early_stopping, reduce_lr])
